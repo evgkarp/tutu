@@ -5,5 +5,29 @@
   <%= @train.number %>
 </p>
 
+<p>
+  <strong>Текущая станция:</strong>
+</p>
+
+<p>
+  <% if @train.current_station.present? %>
+    <%= @train.current_station.title %>
+  <% else %>
+    Нет текущей станции
+  <% end %>
+</p>
+
+<p>
+  <strong>Текущий маршрут:</strong>
+</p>
+
+<p>
+  <% if @train.route.present? %>
+    <%= @train.route.name %>
+  <% else %>
+    Нет текущего маршрута
+  <% end %>
+</p>
+
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>

@@ -1,0 +1,11 @@
+<%= form_with(model: @ticket, local: true) do |f| %>
+<%= render 'common/errors', resource: @ticket %>
+  <div class="field">
+    <%= f.label :number %>
+    <%= f.text_field :number, id: :ticket_number %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "#{ @ticket.new_record? ? 'Создать' : 'Изменить' }" %>
+  </div>
+<% end %>
