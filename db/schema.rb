@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20171022152802) do
   end
 
   create_table "wagons", force: :cascade do |t|
-    t.string "wagon_type"
+    t.string "variety"
     t.string "upper_seats"
     t.string "lower_seats"
     t.datetime "created_at", null: false
