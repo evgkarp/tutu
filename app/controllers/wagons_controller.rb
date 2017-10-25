@@ -1,4 +1,4 @@
-class WagonController < ApplicationController
+class WagonsController < ApplicationController
   before_action :set_wagon, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -45,6 +45,6 @@ class WagonController < ApplicationController
   end
 
   def wagon_params
-    params.require(:wagon).permit(:variety, :upper_seats, :lower_seats)
+    params.require(:wagon).permit(:variety, :upper_seats, :lower_seats, :train_id)
   end
 end

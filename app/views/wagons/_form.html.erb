@@ -1,8 +1,26 @@
 <%= form_with(model: @wagon, local: true) do |f| %>
 <%= render 'common/errors', resource: @wagon %>
   <div class="field">
-    <%= f.label :variety %>
-    <%= f.text_field :variety, id: :wagon_variety %>
+    <%= f.label :train_id, 'Принадлежит поезду:' %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :variety, 'Тип' %>
+    <select name="wagon[variety]">
+      <option value="Купейный">Купейный</option>
+      <option value="Плацкартный">Плацкартный</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <%= f.label :upper_seats %>
+    <%= f.text_field :upper_seats, id: :upper_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lower_seats %>
+    <%= f.text_field :lower_seats, id: :lower_seats %>
   </div>
 
   <div class="actions">
