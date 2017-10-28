@@ -36,9 +36,9 @@
 <p>
   <% if @train.wagons.present? %>
     Купейных:
-    <%= @train.wagons.count { |wagon| wagon.variety == "Купейный" } %> |
+    <%= @train.wagons_count("Купейный") %> |
     Плацкартных:
-    <%= @train.wagons.count { |wagon| wagon.variety == "Плацкартный" } %>
+    <%= @train.wagons_count("Плацкартный") %>
   <% else %>
     Нет вагонов
   <% end %>
@@ -50,7 +50,10 @@
 
 <p>
   <% if @train.wagons.present? %>
-  <%= render 'seats_count' %>
+  <%= "Купейных: #{@train.seats_count("Купейный", "upper_seats")} /
+                 #{@train.seats_count("Купейный", "lower_seats")}" %>
+  <%= "Плацкартных: #{@train.seats_count("Плацкартный", "upper_seats")} /
+                    #{@train.seats_count("Плацкартный", "lower_seats")}" %>
   <% else %>
     Нет вагонов
   <% end %>

@@ -1,5 +1,6 @@
 <%= form_with(model: @user, local: true) do |f| %>
-<%= render 'common/errors', resource: @user %>
+  <%= render 'common/errors', resource: @user %>
+  
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name, id: :user_name %>

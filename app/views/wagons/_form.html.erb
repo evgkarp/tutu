@@ -1,16 +1,16 @@
 <%= form_with(model: @wagon, local: true) do |f| %>
-<%= render 'common/errors', resource: @wagon %>
+  <%= render 'common/errors', resource: @wagon %>
+  
   <div class="field">
     <%= f.label :train_id, 'Принадлежит поезду:' %>
     <%= f.collection_select :train_id, Train.all, :id, :number %>
   </div>
 
+
+
   <div class="field">
     <%= f.label :variety, 'Тип' %>
-    <select name="wagon[variety]">
-      <option value="Купейный">Купейный</option>
-      <option value="Плацкартный">Плацкартный</option>
-    </select>
+    <%= f.select(:variety, [["Купейный", "Купейный"], ["Плацкартный", "Плацкартный"]]) %>
   </div>
 
   <div class="field">

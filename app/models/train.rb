@@ -5,4 +5,12 @@ class Train < ApplicationRecord
   has_many :wagons
 
   validates :number, presence: true
+
+  def seats_count(wagons_variety, seats_level)
+    self.wagons.where(variety: wagons_variety).sum(seats_level)
+  end
+
+  def wagons_count(wagons_variety)
+    self.wagons.where(variety: wagons_variety).count
+  end
 end

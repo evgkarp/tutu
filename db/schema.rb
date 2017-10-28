@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 20171022152802) do
 
   create_table "wagons", force: :cascade do |t|
     t.string "variety"
-    t.string "upper_seats"
-    t.string "lower_seats"
+    t.integer "upper_seats"
+    t.integer "lower_seats"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "train_id"

@@ -45,6 +45,9 @@ class WagonsController < ApplicationController
   end
 
   def wagon_params
-    params.require(:wagon).permit(:variety, :upper_seats, :lower_seats, :train_id)
+    params.require(:wagon).permit(:variety,
+                                  :upper_seats, 
+                                  :lower_seats, 
+                                  :train_id)
   end
 end
