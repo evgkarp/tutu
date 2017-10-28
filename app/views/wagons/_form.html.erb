@@ -1,0 +1,27 @@
+<%= form_with(model: @wagon, local: true) do |f| %>
+  <%= render 'common/errors', resource: @wagon %>
+  
+  <div class="field">
+    <%= f.label :train_id, 'Принадлежит поезду:' %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :variety, 'Тип' %>
+    <%= f.select(:variety, ["Купейный", "Плацкартный"]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :upper_seats %>
+    <%= f.text_field :upper_seats, id: :upper_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lower_seats %>
+    <%= f.text_field :lower_seats, id: :lower_seats %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "#{ @wagon.new_record? ? 'Создать' : 'Изменить' }" %>
+  </div>
+<% end %>

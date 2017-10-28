@@ -29,5 +29,35 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Количество вагонов:</strong>
+</p>
+
+<p>
+  <% if @train.wagons.present? %>
+    Купейных:
+    <%= @train.wagons_count("Купейный") %> |
+    Плацкартных:
+    <%= @train.wagons_count("Плацкартный") %>
+  <% else %>
+    Нет вагонов
+  <% end %>
+</p>
+
+<p>
+  <strong>Количество мест(верхних/нижних):</strong>
+</p>
+
+<p>
+  <% if @train.wagons.present? %>
+  <%= "Купейных: #{@train.seats_count("Купейный", "upper_seats")} /
+                 #{@train.seats_count("Купейный", "lower_seats")}" %>
+  <%= "Плацкартных: #{@train.seats_count("Плацкартный", "upper_seats")} /
+                    #{@train.seats_count("Плацкартный", "lower_seats")}" %>
+  <% else %>
+    Нет вагонов
+  <% end %>
+</p>
+
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
