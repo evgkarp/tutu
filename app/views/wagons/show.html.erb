@@ -2,7 +2,7 @@
 
 <p>
   <strong>Тип:</strong>
-  <%= @wagon.variety %>
+  <%= Wagon.wagons_types[@wagon.type] %>
 </p>
 
 <p>
@@ -18,7 +18,7 @@
 </p>
 
 <p>
-    <%= @wagon.upper_seats %>
+  <%= @wagon.upper_seats %>
 </p>
 
 <p>
@@ -26,7 +26,7 @@
 </p>
 
 <p>
-    <%= @wagon.lower_seats %>
+  <%= @wagon.lower_seats %>
 </p>
 
 <%= link_to 'Редактировать', edit_wagon_path(@wagon) %> |
