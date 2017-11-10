@@ -30,30 +30,28 @@
 </p>
 
 <p>
-  <strong>Количество вагонов:</strong>
+  <strong>Список вагонов:</strong>
 </p>
 
 <p>
   <% if @train.wagons.present? %>
-    Купейных:
-    <%= @train.wagons_count("Купейный") %> |
-    Плацкартных:
-    <%= @train.wagons_count("Плацкартный") %>
+    <ul>
+      <% @train.wagons.each do |wagon| %>
+        <li><a href="../wagons/<%= wagon.id %>"><%= wagon.number %></a></li>
+      <% end %>
+    </ul>
   <% else %>
     Нет вагонов
   <% end %>
 </p>
 
 <p>
-  <strong>Количество мест(верхних/нижних):</strong>
+  <strong>Количество мест:</strong>
 </p>
 
 <p>
   <% if @train.wagons.present? %>
-  <%= "Купейных: #{@train.seats_count("Купейный", "upper_seats")} /
-                 #{@train.seats_count("Купейный", "lower_seats")}" %>
-  <%= "Плацкартных: #{@train.seats_count("Плацкартный", "upper_seats")} /
-                    #{@train.seats_count("Плацкартный", "lower_seats")}" %>
+    <%= render "seats_show" %>
   <% else %>
     Нет вагонов
   <% end %>

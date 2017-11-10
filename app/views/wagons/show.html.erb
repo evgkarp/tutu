@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Номер:</strong>
+  <%= @wagon.number %>
+</p>
+
+<p>
   <strong>Тип:</strong>
   <%= Wagon.wagons_types[@wagon.type] %>
 </p>

@@ -1,0 +1,7 @@
+<% @wagon.class.seats_types.each do |seats_type, localized_seats_type| %>
+  <% if @wagon.send(seats_type) %>
+    <p>
+      <%= "#{localized_seats_type}: #{@wagon.send(seats_type)}" %>
+    </p>
+  <% end %>
+<% end %>
