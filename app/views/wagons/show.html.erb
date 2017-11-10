@@ -6,28 +6,11 @@
 </p>
 
 <p>
-  <strong>Принадлежит поезду:</strong>
-</p>
-
-<p>
+  <strong>Принадлежит поезду номер:</strong>
   <%= @wagon.train.number %>
 </p>
 
-<p>
-  <strong>Количество верхних мест:</strong>
-</p>
-
-<p>
-  <%= @wagon.upper_seats %>
-</p>
-
-<p>
-  <strong>Количество нижних мест:</strong>
-</p>
-
-<p>
-  <%= @wagon.lower_seats %>
-</p>
+<%= render @wagon.type.underscore %>
 
 <%= link_to 'Редактировать', edit_wagon_path(@wagon) %> |
 <%= link_to 'Назад', wagons_path %>

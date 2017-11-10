@@ -7,14 +7,14 @@ class Wagon < ApplicationRecord
 
   scope :economy, -> { where(type: 'EconomyWagon') }
   scope :coupe, -> { where(type: 'CoupeWagon') }
-  scope :sedentary, -> { where(type: 'SedentatyWagon') }
+  scope :sedentary, -> { where(type: 'SedentaryWagon') }
   scope :sleeping, -> { where(type: 'SleepingWagon') }
   scope :ordered, -> { order(:number) }
 
   def self.wagons_types
     { 'EconomyWagon' => 'Плацкартный', 
       'CoupeWagon' => 'Купейный', 
-      'SedentatyWagon' => 'Сидячий', 
+      'SedentaryWagon' => 'Сидячий', 
       'SleepingWagon' => 'СВ' }
   end
 end

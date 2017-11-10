@@ -1,4 +1,4 @@
-<%= form_with(model: @wagon.becomes(Wagon), local: true) do |f| %>
+<%= form_with(model: wagon.becomes(Wagon), local: true) do |f| %>
   <%= render 'common/errors', resource: @wagon %>
 
   <div class="field">
@@ -17,17 +17,16 @@
   </div>
 
   <div class="field">
-    <%= wagon.class %>
-      <%= f.label :upper_seats %>
-      <%= f.text_field :upper_seats, id: :upper_seats %>
-      <%= f.label :lower_seats %>
-      <%= f.text_field :lower_seats, id: :lower_seats %>
-      <%= f.label :side_upper_seats %>
-      <%= f.text_field :side_upper_seats, id: :side_upper_seats %>
-      <%= f.label :side_lower_seats %>
-      <%= f.text_field :side_lower_seats, id: :side_lower_seats %>
-      <%= f.label :seats %>
-      <%= f.text_field :seats, id: :seats %>
+    <%= f.label :upper_seats, "Верхние места:" %>
+    <%= f.text_field :upper_seats, id: :upper_seats %>
+    <%= f.label :lower_seats, "Нижние места:" %>
+    <%= f.text_field :lower_seats, id: :lower_seats %>
+    <%= f.label :side_upper_seats, "Боковые верхние места:" %>
+    <%= f.text_field :side_upper_seats, id: :side_upper_seats %>
+    <%= f.label :side_lower_seats, "Боковые нижние места:" %>
+    <%= f.text_field :side_lower_seats, id: :side_lower_seats %>
+    <%= f.label :seats, "Сидячие места:" %>
+    <%= f.text_field :seats, id: :seats %>
   </div>
 
   <div class="actions">
