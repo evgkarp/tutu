@@ -14,7 +14,12 @@ class Train < ApplicationRecord
     uniq_wagons_types = self.wagons.map { |wagon| wagon.type }
     uniq_wagons_types.uniq
   end
-  # def wagons_count(wagons_type)
-  #   self.wagons.where(type: wagons_type).count
-  # end
+
+  def ordered_wagons
+    if self.head_ordered
+      self.wagons.order(number: :asc)
+    else
+      self.wagons.order(number: :desc)
+    end
+  end
 end

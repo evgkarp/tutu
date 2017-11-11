@@ -2,8 +2,10 @@ class Wagon < ApplicationRecord
   belongs_to :train
   has_many :tickets
 
-  validates :train_id, uniqueness: { scope: :number }
+  validates :number, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :number, uniqueness: { scope: :train_id }
 
+  before_validation :set_number, on: :create
 
   scope :economy, -> { where(type: 'EconomyWagon') }
   scope :coupe, -> { where(type: 'CoupeWagon') }
@@ -24,5 +26,11 @@ class Wagon < ApplicationRecord
       side_upper_seats: 'Верхние боковые места',
       side_lower_seats: 'Нижние боковые места',
       seats: 'Сидячие места' }
+  end
+
+  private
+
+  def set_number
+    self.number = train.wagons.maximum(:number) + 1
   end
 end

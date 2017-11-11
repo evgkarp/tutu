@@ -2,11 +2,6 @@
   <%= render 'common/errors', resource: @wagon %>
 
   <div class="field">
-    <%= f.label :number, 'Номер вагона:' %>
-    <%= f.text_field :number, id: :number %>
-  </div>
-
-  <div class="field">
     <%= f.label :train_id, 'Принадлежит поезду:' %>
     <%= f.collection_select :train_id, Train.all, :id, :number %>
   </div>

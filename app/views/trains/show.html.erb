@@ -33,10 +33,21 @@
   <strong>Список вагонов:</strong>
 </p>
 
+<%= form_with(model: @train, local: true) do |f| %>
+  <div class="field">
+    <%= f.label :head_ordered, 'Нумерация с головы' %>
+    <%= f.check_box("head_ordered", {}, :true, :false) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Применить" %>
+  </div>
+<% end %>
+
 <p>
   <% if @train.wagons.present? %>
     <ul>
-      <% @train.wagons.each do |wagon| %>
+      <% @train.ordered_wagons.each do |wagon| %>
         <li><a href="../wagons/<%= wagon.id %>"><%= wagon.number %></a></li>
       <% end %>
     </ul>
@@ -46,7 +57,7 @@
 </p>
 
 <p>
-  <strong>Количество мест:</strong>
+  <strong>Количество мест по типу вагона:</strong>
 </p>
 
 <p>
