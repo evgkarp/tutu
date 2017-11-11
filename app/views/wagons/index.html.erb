@@ -5,13 +5,14 @@
 <table>
   <thead>
     <tr>
+      <th>Номер</th>
       <th>Тип</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <%= render @wagons %>
+      <%= render partial: "wagon", collection: @wagons %>
   </tbody>
 </table>
 

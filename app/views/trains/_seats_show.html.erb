@@ -1,0 +1,11 @@
+<% @train.uniq_wagons_types.each do |wagon_type| %>
+  <ul>
+    <%= @train.wagons.first.class::WAGONS_TYPES[wagon_type] %>
+  </ul>
+    <% @train.wagons.first.class.seats_types.each do |seats_type, localized_seats_type| %>
+      <% if @train.seats_count(wagon_type, seats_type) != 0 %>
+        <li><%= "#{localized_seats_type}: #{@train.seats_count(wagon_type, seats_type)}" %></li>
+      <% end %>
+    <% end %>
+<% end %>
+

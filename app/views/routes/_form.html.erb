@@ -1,14 +1,15 @@
 <%= form_with(model: @route, local: true) do |f| %>
   <%= render 'common/errors', resource: @route %>
-  
+
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name, "Наименование" %>
     <%= f.text_field :name, id: :route_name %>
   </div>
 
   <div class="field">
     <%= f.label :railway_station_ids, 'Станции в маршруте' %>
-    <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, { multiple: true } %>
+    <%= f.collection_select :railway_station_ids, RailwayStation.all,
+                            :id, :title, {}, { multiple: true } %>
   </div>
 
   <div class="actions">

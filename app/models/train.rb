@@ -6,11 +6,20 @@ class Train < ApplicationRecord
 
   validates :number, presence: true
 
-  def seats_count(wagons_variety, seats_level)
-    self.wagons.where(variety: wagons_variety).sum(seats_level)
+  def seats_count(wagons_type, seats_type)
+    wagons.where(type: wagons_type).sum(seats_type)
   end
 
-  def wagons_count(wagons_variety)
-    self.wagons.where(variety: wagons_variety).count
+  def uniq_wagons_types
+    uniq_wagons_types = wagons.map { |wagon| wagon.type }
+    uniq_wagons_types.uniq
+  end
+
+  def ordered_wagons
+    if head_ordered
+      wagons.order(number: :asc)
+    else
+      wagons.order(number: :desc)
+    end
   end
 end
