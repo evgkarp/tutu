@@ -8,7 +8,7 @@
 
   <div class="field">
     <%= f.label :type, 'Тип' %>
-    <%= f.collection_select :type, Wagon.wagons_types, :first, :last %>
+    <%= f.collection_select :type, Wagon::WAGONS_TYPES, :first, :last %>
   </div>
 
   <div class="field">

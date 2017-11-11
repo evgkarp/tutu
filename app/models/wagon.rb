@@ -1,4 +1,10 @@
 class Wagon < ApplicationRecord
+  WAGONS_TYPES =
+    { 'EconomyWagon' => 'Плацкартный',
+      'CoupeWagon' => 'Купейный',
+      'SedentaryWagon' => 'Сидячий',
+      'SleepingWagon' => 'СВ' }.freeze
+
   belongs_to :train
   has_many :tickets
 
@@ -13,13 +19,6 @@ class Wagon < ApplicationRecord
   scope :sleeping, -> { where(type: 'SleepingWagon') }
   scope :ordered, -> { order(:number) }
 
-  def self.wagons_types
-    { 'EconomyWagon' => 'Плацкартный',
-      'CoupeWagon' => 'Купейный',
-      'SedentaryWagon' => 'Сидячий',
-      'SleepingWagon' => 'СВ' }
-  end
-
   def self.seats_types
     { upper_seats: 'Верхние места',
       lower_seats: 'Нижние места',
@@ -31,6 +30,6 @@ class Wagon < ApplicationRecord
   private
 
   def set_number
-    self.number = train.wagons.maximum(:number) + 1
+    self.number = train.wagons.maximum(:number).to_i + 1
   end
 end

@@ -1,6 +1,6 @@
 <tr>
   <td><%= wagon.number %></td>
-  <td><%= Wagon.wagons_types[wagon.type] %></td>
+  <td><%= Wagon::WAGONS_TYPES[wagon.type] %></td>
   <td><%= link_to 'Показать', wagon_path(wagon) %></td>
   <td><%= link_to 'Редактировать', edit_wagon_path(wagon) %></td>
   <td><%= link_to 'Удалить', wagon_path(wagon), method: :delete,
