@@ -48,12 +48,16 @@
   <% if @train.wagons.present? %>
     <ul>
       <% @train.ordered_wagons.each do |wagon| %>
-        <li><a href="../wagons/<%= wagon.id %>"><%= wagon.number %></a></li>
+        <li><%= link_to "Вагон № #{wagon.number}", wagon.becomes(Wagon) %></li>
       <% end %>
     </ul>
   <% else %>
     Нет вагонов
   <% end %>
+</p>
+
+<p>
+  <%= link_to "Добавить вагон", new_train_wagon_path(@train) %>
 </p>
 
 <p>

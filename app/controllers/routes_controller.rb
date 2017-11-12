@@ -9,7 +9,7 @@ class RoutesController < ApplicationController
   end
 
   def new
-    @route = Route.new    
+    @route = Route.new
   end
 
   def create
@@ -41,7 +41,7 @@ class RoutesController < ApplicationController
   private
 
   def set_route
-    @route = Route.find(params[:id])    
+    @route = Route.find(params[:id])
   end
 
   def route_params
