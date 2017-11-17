@@ -23,7 +23,7 @@ class RailwayStation < ApplicationRecord
     station_route.update(arrival_time: arrival_time) if station_route
   end
 
-  def set_arrival_time(route)
+  def arrival_time(route)
     station_route(route).try(:arrival_time).try { strftime("%FT%R") }
   end
 
@@ -32,7 +32,7 @@ class RailwayStation < ApplicationRecord
     station_route.update(departure_time: departure_time) if station_route
   end
 
-  def set_departure_time(route)
+  def departure_time(route)
     station_route(route).try(:departure_time).try { strftime("%FT%R") }
   end
 

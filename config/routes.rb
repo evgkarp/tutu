@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :tickets
   resources :users
   resources :wagons
+  resource :search, only: [:show]
+
   get 'welcome/index'
 
   root 'welcome#index'

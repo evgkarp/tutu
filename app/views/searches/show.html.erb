@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Поиск билета</h1>
+
+<%= form_with(url: search_path, method: :get, local: true) do |f| %>
+
+  <div class="field">
+    <%= f.label :from_station_id, 'Начальная станция' %>
+    <%= f.collection_select :from_station_id, RailwayStation.all, :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :to_station_id, 'Конечная станция' %>
+    <%= f.collection_select :to_station_id, RailwayStation.all, :id, :title %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Найти" %>
+  </div>
+<% end %>
+
+<p>
+  <% unless @found_routes.empty? %>
+    <table>
+    <thead>
+      <tr>
+        <td width="150">Маршрут</td>
+        <td>Номер поезда</td>
+        <td>Время отправления</td>
+        <td>Время прибытия</td>
+        <td>Билеты</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @found_routes.each do |route| %>
+        <% route.trains.each do |train| %>
+          <tr>
+            <td><%= route.name %></td>
+            <td><%= "№#{train.number}" %></td>
+            <td><%= @from_station.departure_time(route) %></td>
+            <td><%= @to_station.arrival_time(route) %></td>
+            <td><%= button_to 'Купить', new_ticket_path, method: :get %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+    </table>
+  <% end %>
+</p>
+
