@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :trains do
     resources :wagons, shallow: true
+    resources :tickets, shallow: true
   end
   resources :railway_stations do
     patch :update_position, on: :member

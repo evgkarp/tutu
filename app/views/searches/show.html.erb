@@ -39,7 +39,13 @@
             <td><%= "№#{train.number}" %></td>
             <td><%= @from_station.departure_time(route) %></td>
             <td><%= @to_station.arrival_time(route) %></td>
-            <td><%= button_to 'Купить', new_ticket_path, method: :get %></td>
+            <td>
+              <%= form_with(url: new_train_ticket_path(train), method: :get, local: true) do |f| %>
+                <%= hidden_field_tag(:from_station_id, "#{@from_station.id}") %>
+                <%= hidden_field_tag(:to_station_id, "#{@to_station.id}") %>
+                <%= button_to 'Купить' %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       <% end %>

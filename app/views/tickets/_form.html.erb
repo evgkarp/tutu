@@ -1,12 +1,27 @@
-<%= form_with(model: @ticket, local: true) do |f| %>
+<%= form_with(model: [@train, ticket], local: true) do |f| %>
   <%= render 'common/errors', resource: @ticket %>
-  
+
   <div class="field">
-    <%= f.label :number %>
-    <%= f.text_field :number, id: :ticket_number %>
+    <%= f.label :full_name, "ФИО" %>
+    <%= f.text_field :full_name, id: :ticket_full_name %>
   </div>
 
+  <div class="field">
+    <%= f.label :passport_number, "Номер паспорта" %>
+    <%= f.text_field :passport_number, id: :ticket_passport_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :wagon_id, 'Номер вагона' %>
+    <%= f.collection_select :wagon_id, @train.wagons, :id, :number %>
+  </div>
+
+  <%= hidden_field_tag("ticket[from_station_id]", "#{@from_station.id}") %>
+  <%= hidden_field_tag("ticket[to_station_id]", "#{@to_station.id}") %>
+  <%= hidden_field_tag(:from_station_id, "#{@from_station.id}") %>
+  <%= hidden_field_tag(:to_station_id, "#{@to_station.id}") %>
+
   <div class="actions">
-    <%= f.submit "#{ @ticket.new_record? ? 'Создать' : 'Изменить' }" %>
+    <%= f.submit "Купить" %>
   </div>
 <% end %>
