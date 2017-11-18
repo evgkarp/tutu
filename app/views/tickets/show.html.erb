@@ -1,9 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Номер:</strong>
-  <%= @ticket.number %>
-</p>
+<h1>Билет на поезд</h1>
 
-<%= link_to 'Редактировать', edit_ticket_path(@ticket) %> |
+<hr/>
+
+<table>
+  <thead>
+    <tr>
+      <td width="150">Пассажир</td>
+      <td>Номер паспорта</td>
+      <td>Номер билета</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @ticket.full_name %></td>
+      <td><%= @ticket.passport_number %></td>
+      <td><%= @ticket.number %></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<table>
+  <thead>
+    <tr>
+      <td width="150">Маршрут</td>
+      <td>Oтправление</td>
+      <td>Прибытие</td>
+      <td>Вагон</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @ticket.train.route.name %></td>
+      <td><%= @ticket.from_station.arrival_time(@ticket.train.route) %></td>
+      <td><%= @ticket.to_station.departure_time(@ticket.train.route) %></td>
+      <td><%= @ticket.wagon.class::WAGONS_TYPES[@ticket.wagon.type] %></td>
+    </tr>
+    <tr>
+      <td><%= "Поезд №#{@ticket.train.number}" %></td>
+      <td><%= @ticket.from_station.title %></td>
+      <td><%= @ticket.to_station.title %></td>
+    </tr>
+  </tbody>
+</table>
+
 <%= link_to 'Назад', tickets_path %>
