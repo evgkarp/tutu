@@ -20,7 +20,7 @@
 <% end %>
 
 <p>
-  <% unless @found_routes.empty? %>
+  <% if @search_result.routes.present? %>
     <table>
     <thead>
       <tr>
@@ -32,17 +32,17 @@
       </tr>
     </thead>
     <tbody>
-      <% @found_routes.each do |route| %>
+      <% @search_result.routes.each do |route| %>
         <% route.trains.each do |train| %>
           <tr>
             <td><%= route.name %></td>
             <td><%= "№#{train.number}" %></td>
-            <td><%= @from_station.departure_time(route) %></td>
-            <td><%= @to_station.arrival_time(route) %></td>
+            <td><%= @search_result.from_station.departure_time(route) %></td>
+            <td><%= @search_result.to_station.arrival_time(route) %></td>
             <td>
               <%= form_with(url: new_train_ticket_path(train), method: :get, local: true) do |f| %>
-                <%= hidden_field_tag(:from_station_id, "#{@from_station.id}") %>
-                <%= hidden_field_tag(:to_station_id, "#{@to_station.id}") %>
+                <%= hidden_field_tag(:from_station_id, "#{@search_result.from_station.id}") %>
+                <%= hidden_field_tag(:to_station_id, "#{@search_result.to_station.id}") %>
                 <%= button_to 'Купить' %>
               <% end %>
             </td>
@@ -51,6 +51,8 @@
       <% end %>
     </tbody>
     </table>
+  <% else %>
+  <p>Билеты не найдены</p>
   <% end %>
 </p>
 

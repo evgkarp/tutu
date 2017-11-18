@@ -52,8 +52,7 @@ class WagonsController < ApplicationController
                                   :side_upper_seats,
                                   :side_lower_seats,
                                   :seats,
-                                  :number,
-                                  :train_id)
+                                  :number)
   end
 
   def set_train

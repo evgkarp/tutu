@@ -10,30 +10,27 @@ class RailwayStation < ApplicationRecord
   }
 
   def update_position(route, position)
-    station_route = station_route(route)
-    station_route.update(position: position) if station_route
+    station_route(route)&.update(position: position)
   end
 
   def position_in(route)
-    station_route(route).try(:position)
+    station_route(route)&.position
   end
 
   def update_arrival_time(route, arrival_time)
-    station_route = station_route(route)
-    station_route.update(arrival_time: arrival_time) if station_route
+    station_route(route)&.update(arrival_time: arrival_time)
   end
 
   def arrival_time(route)
-    station_route(route).try(:arrival_time).try { strftime("%FT%R") }
+    station_route(route)&.arrival_time&.strftime("%FT%R")
   end
 
   def update_departure_time(route, departure_time)
-    station_route = station_route(route)
-    station_route.update(departure_time: departure_time) if station_route
+    station_route(route)&.update(departure_time: departure_time)
   end
 
   def departure_time(route)
-    station_route(route).try(:departure_time).try { strftime("%FT%R") }
+    station_route(route)&.departure_time&.strftime("%FT%R")
   end
 
   protected

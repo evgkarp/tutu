@@ -53,8 +53,7 @@ class TicketsController < ApplicationController
                                    :passport_number,
                                    :from_station_id,
                                    :to_station_id,
-                                   :wagon_id,
-                                   :train_id)
+                                   :wagon_id)
   end
 
   def set_train

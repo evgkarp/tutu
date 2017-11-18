@@ -1,21 +1,18 @@
 class Search
-  def self.start(from_station_id, to_station_id)
-    found_routes = []
-    Route.find_each do |route|
-      if route.railway_station_ids.include?(from_station_id.to_i) &&
-         route.railway_station_ids.include?(to_station_id.to_i)
-        found_routes << route if from_station(from_station_id).position_in(route).to_i <
-                                 to_station(to_station_id).position_in(route).to_i
-      end
-    end
-    found_routes
+  def initialize(from_station_id, to_station_id)
+    @from_station_id = from_station_id
+    @to_station_id = to_station_id
   end
 
-  def self.from_station(from_station_id)
-    RailwayStation.find(from_station_id.to_i) unless from_station_id.nil?
+  def routes
+    from_station&.routes & to_station&.routes
   end
 
-  def self.to_station(to_station_id)
-    RailwayStation.find(to_station_id.to_i) unless to_station_id.nil?
+  def from_station
+    RailwayStation.find(@from_station_id.to_i) if @from_station_id.present?
+  end
+
+  def to_station
+    RailwayStation.find(@to_station_id.to_i) if @to_station_id.present?
   end
 end
