@@ -1,0 +1,74 @@
+<p>
+  <strong>Номер:</strong>
+  <%= @train.number %>
+</p>
+
+<p>
+  <strong>Текущая станция:</strong>
+</p>
+
+<p>
+  <% if @train.current_station.present? %>
+    <%= @train.current_station.title %>
+  <% else %>
+    Нет текущей станции
+  <% end %>
+</p>
+
+<p>
+  <strong>Текущий маршрут:</strong>
+</p>
+
+<p>
+  <% if @train.route.present? %>
+    <%= @train.route.name %>
+  <% else %>
+    Нет текущего маршрута
+  <% end %>
+</p>
+
+<p>
+  <strong>Список вагонов:</strong>
+</p>
+
+<%= form_with(model: [:admin, @train], local: true) do |f| %>
+  <div class="field">
+    <%= f.label :head_ordered, 'Нумерация с головы' %>
+    <%= f.check_box("head_ordered", {}, :true, :false) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Применить" %>
+  </div>
+<% end %>
+
+<p>
+  <% if @train.wagons.present? %>
+    <ul>
+      <% @train.ordered_wagons.each do |wagon| %>
+        <li><%= link_to "Вагон № #{wagon.number}", "../wagons/#{wagon.id}" %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    Нет вагонов
+  <% end %>
+</p>
+
+<p>
+  <%= link_to "Добавить вагон", new_admin_train_wagon_path(@train) %>
+</p>
+
+<p>
+  <strong>Количество мест по типу вагона:</strong>
+</p>
+
+<p>
+  <% if @train.wagons.present? %>
+    <%= render "seats_show" %>
+  <% else %>
+    Нет вагонов
+  <% end %>
+</p>
+
+<%= link_to 'Редактировать', edit_admin_train_path(@train) %> |
+<%= link_to 'Назад', admin_trains_path %>
