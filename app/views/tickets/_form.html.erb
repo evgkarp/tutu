@@ -1,4 +1,4 @@
-<%= form_with(model: [@train, ticket], local: true) do |f| %>
+<%= form_with(model: ticket, local: true) do |f| %>
   <%= render 'common/errors', resource: @ticket %>
 
   <div class="field">
@@ -18,8 +18,10 @@
 
   <%= hidden_field_tag("ticket[from_station_id]", @from_station.id) %>
   <%= hidden_field_tag("ticket[to_station_id]", @to_station.id) %>
+  <%= hidden_field_tag("ticket[train_id]", @train.id) %>
   <%= hidden_field_tag(:from_station_id, @from_station.id) %>
   <%= hidden_field_tag(:to_station_id, @to_station.id) %>
+  <%= hidden_field_tag(:train_id, @train.id) %>
 
   <div class="actions">
     <%= f.submit "Купить" %>

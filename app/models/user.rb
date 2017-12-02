@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :tickets
 
-  # validates :name, presence: true
+  validates :name, presence: true
 end

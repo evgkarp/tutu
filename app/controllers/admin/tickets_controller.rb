@@ -1,4 +1,4 @@
-class TicketsController < Admin::BaseController
+class Admin::TicketsController < Admin::BaseController
   before_action :authenticate_user!, only: [:index, :show, :create, :destroy]
   before_action :set_train, only: [:new, :create]
   before_action :set_from_station, only: [:new, :create]
@@ -17,10 +17,10 @@ class TicketsController < Admin::BaseController
   end
 
   def create
-    @ticket = current_user.tickets.new(ticket_params)
+    @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      redirect_to @ticket
+      redirect_to [:admin, @ticket]
     else
       render search_path
     end
@@ -31,7 +31,7 @@ class TicketsController < Admin::BaseController
 
   def update
     if @ticket.update(ticket_params)
-      redirect_to ticket_path(@ticket)
+      redirect_to admin_ticket_path(@ticket)
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class TicketsController < Admin::BaseController
 
   def destroy
     @ticket.destroy
-    redirect_to tickets_url
+    redirect_to admin_tickets_url
   end
 
   private
@@ -54,6 +54,7 @@ class TicketsController < Admin::BaseController
                                    :passport_number,
                                    :from_station_id,
                                    :to_station_id,
+                                   :user_id,
                                    :wagon_id,
                                    :train_id)
   end

@@ -1,5 +1,5 @@
 <h1>Покупка билета</h1>
 
-<%= render 'form', ticket: @ticket %>
+<%= render 'form', ticket: [:admin, @ticket], full: true %>
 
-<%= link_to 'Назад', tickets_path %>
+<%= link_to 'Назад', admin_tickets_path %>

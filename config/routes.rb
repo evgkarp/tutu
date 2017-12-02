@@ -1,19 +1,22 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :tickets, only: [:create, :show]
+  resources :tickets
   resource :search, only: [:show]
 
   namespace :admin do
     resources :trains do
       resources :wagons, shallow: true
-      resources :tickets, shallow: true
     end
+
+    resources :tickets
+
     resources :railway_stations do
       patch :update_position, on: :member
       patch :update_arrival_time, on: :member
       patch :update_departure_time, on: :member
     end
+
     resources :routes
   end
 
