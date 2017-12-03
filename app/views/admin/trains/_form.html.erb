@@ -1,0 +1,22 @@
+<%= form_with(model: [:admin, @train], local: true) do |f| %>
+  <%= render 'common/errors', resource: @train %>
+
+  <div class="field">
+    <%= f.label :number, 'Номер' %>
+    <%= f.text_field :number, id: :train_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :curren_station_id, 'Текущая станция' %>
+    <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :route_id, 'Текущий маршрут' %>
+    <%= f.collection_select :route_id, Route.all, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "#{ @train.new_record? ? 'Создать' : 'Изменить' }" %>
+  </div>
+<% end %>

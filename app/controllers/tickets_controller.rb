@@ -1,8 +1,9 @@
 class TicketsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show, :create, :destroy]
   before_action :set_train, only: [:new, :create]
   before_action :set_from_station, only: [:new, :create]
   before_action :set_to_station, only: [:new, :create]
-  before_action :set_ticket, only: [:show, :update, :destroy]
+  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
     @tickets = Ticket.all
@@ -16,12 +17,12 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = @train.tickets.new(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save
       redirect_to @ticket
     else
-      render :new
+      render search_path
     end
   end
 
@@ -53,7 +54,8 @@ class TicketsController < ApplicationController
                                    :passport_number,
                                    :from_station_id,
                                    :to_station_id,
-                                   :wagon_id)
+                                   :wagon_id,
+                                   :train_id)
   end
 
   def set_train
