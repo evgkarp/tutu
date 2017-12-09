@@ -1,10 +1,4 @@
 <% if user_signed_in? %>
-  <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
-    <% if !current_user.admin? %>
-      <p>Привет, <%= current_user.name %>!</p>
-      <p><%= link_to 'Мои билеты', tickets_path %></p>
-    <% end %>
-  <p>Аккаунт: <%= current_user.email %> </p>
-<% else %>
-  <%= link_to "Войти", new_user_session_path %>
+  <p>Аккаунт: <%= current_user.email %></p>
+  <p>Привет, <%= current_user.name %>!</p>
 <% end %>

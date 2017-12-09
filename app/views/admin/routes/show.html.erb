@@ -11,10 +11,10 @@
   <% if @route.railway_stations.empty? %>
   Нет станций в маршруте
   <% else %>
-    <table>
-      <thead>
+    <table class="table table-condensed">
+      <thead style="font-weight: bold">
         <tr>
-          <td width="100">Название</td>
+          <td>Название</td>
           <td>Позиция</td>
           <td>Время прибытия</td>
           <td>Время отправления</td>
@@ -25,24 +25,24 @@
           <tr>
             <td><%= station.title %></td>
             <td>
-              <%= form_tag update_position_admin_railway_station_path(station), method: :patch do %>
-                <%= number_field_tag :position, station.position_in(@route) %>
+              <%= form_tag(update_position_admin_railway_station_path(station), {method: :patch}) do %>
+                <%= number_field_tag :position, station.position_in(@route), style: "line-height: 34px" %>
                 <%= hidden_field_tag :route_id, @route.id %>
-                <%= submit_tag "Изменить" %>
+                <%= submit_tag "Изменить", class: "btn" %>
               <% end %>
             </td>
             <td>
-              <%= form_tag update_arrival_time_admin_railway_station_path(station), method: :patch do %>
+              <%= form_tag(update_arrival_time_admin_railway_station_path(station), {method: :patch}) do %>
                 <%= datetime_field_tag :arrival_time, station.arrival_time(@route) %>
                 <%= hidden_field_tag :route_id, @route.id %>
-                <%= submit_tag "Изменить" %>
+                <%= submit_tag "Изменить", class: "btn" %>
               <% end %>
             </td>
             <td>
-              <%= form_tag update_departure_time_admin_railway_station_path(station), method: :patch do %>
+              <%= form_tag(update_departure_time_admin_railway_station_path(station), {method: :patch}) do %>
                 <%= datetime_field_tag :departure_time, station.departure_time(@route) %>
                 <%= hidden_field_tag :route_id, @route.id %>
-                <%= submit_tag "Изменить" %>
+                <%= submit_tag "Изменить", class: "btn" %>
               <% end %>
             </td>
           </tr>

@@ -1,0 +1,41 @@
+ru:
+  common:
+    errors: "При заполении формы возникли ошибки"
+  devise:
+    registrations:
+      new:
+        sign_up: "Регистрация"
+        name: "ФИО"
+        email: "Эл.адрес"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        characters_minimum: "символов минимум"
+    sessions:
+      new:
+        log_in: "Вход"
+        email: "Эл.адрес"
+        password: "Пароль"
+        remember_me: "Запомнить меня"
+    shared:
+      links:
+        log_in: "Вход"
+        sign_up: "Регистрация"
+        forgot_your_password?: "Забыли пароль?"
+        didn't_receive_confirmation_instructions?: "Не получили инструкции по подтверждению учетной записи?"
+        didn't_receive_unlock_instructions?: "Не получили инструкции по разблокировке?"
+  tickets:
+    form:
+      full_name: "ФИО"
+      passport_number: "Номер паспорта"
+      wagon_number: "Номер вагона"
+      buy: "Купить"
+  searches:
+    show:
+      start_station: "Начальная станция"
+      end_station: "Конечная станция"
+      find: "Найти"
+      buy: "Купить"
+    buy_ticket:
+      buy: "Купить"
+
+

@@ -1,4 +1,4 @@
-<%= form_with(model: ticket, local: true) do |f| %>
+<%= form_with(model: ticket, local: true, html: {class: "form-inline"}) do |f| %>
   <%= render 'common/errors', resource: @ticket %>
   <% if local_assigns[:full] %>
     <% train = @train %>
@@ -6,24 +6,32 @@
     <% train = @ticket.train %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :full_name, "ФИО" %>
-    <%= f.text_field :full_name, id: :ticket_full_name %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :full_name, "ФИО" %>
+      <%= f.text_field :full_name, id: :ticket_full_name, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :passport_number, "Номер паспорта" %>
-    <%= f.text_field :passport_number, id: :ticket_passport_number %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :passport_number, "Номер паспорта" %>
+      <%= f.text_field :passport_number, id: :ticket_passport_number, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :wagon_id, 'Номер вагона' %>
-    <%= f.collection_select :wagon_id, train.wagons, :id, :number %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :wagon_id, 'Номер вагона' %>
+      <%= f.collection_select :wagon_id, train.wagons, :id, :number, {}, html_options = {class: "form-control"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id, 'Аккаунт пользователя' %>
-    <%= f.collection_select :user_id, User.all, :id, :email %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :user_id, 'Аккаунт пользователя' %>
+      <%= f.collection_select :user_id, User.all, :id, :email, {}, html_options = {class: "form-control"} %>
+    </div>
   </div>
 
   <% if local_assigns[:full] %>
@@ -35,7 +43,11 @@
     <%= hidden_field_tag(:train_id, @train.id) %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "#{ @ticket.new_record? ? 'Купить' : 'Изменить' }" %>
+  <br>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.submit "#{ @ticket.new_record? ? 'Купить' : 'Изменить' }", class: "btn" %>
+    </div>
   </div>
 <% end %>

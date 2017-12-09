@@ -1,12 +1,18 @@
-<%= form_with(model: [:admin, @railway_station], local: true) do |f| %>
+<%= form_with(model: [:admin, @railway_station], local: true, html: {class: "form-inline"}) do |f| %>
   <%= render 'common/errors', resource: @railway_station %>
 
-  <div class="field">
-    <%= f.label :title, "Название" %>
-    <%= f.text_field :title, id: :railway_station_title %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :title, "Название" %>
+      <%= f.text_field :title, id: :railway_station_title, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "#{ @railway_station.new_record? ? 'Создать' : 'Изменить' }" %>
+  <br>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.submit "#{ @railway_station.new_record? ? 'Создать' : 'Изменить' }", class: "btn" %>
+    </div>
   </div>
 <% end %>

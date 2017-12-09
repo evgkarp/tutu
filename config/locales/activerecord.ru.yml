@@ -1,0 +1,36 @@
+ru:
+  activerecord:
+    attributes:
+      railway_station:
+        title: "Название"
+      route:
+        name: "Наименование"
+      train:
+        number: "Номер"
+      ticket:
+        number: "Номер"
+        full_name: "ФИО"
+        passport_number: "Номер паспорта"
+      user:
+        name: "Имя"
+      wagon:
+        number: "Номер"
+        upper_seats: "Верхние места"
+        lower_seats: "Нижние места"
+        side_upper_seats: "Боковые верхние места"
+        side_lower_seats: "Боковые нижние места"
+        seats: "Сидячие места"
+    errors:
+      messages:
+        blank: "не может быть пустым"
+        not_a_number: "должен состоять только из цифр"
+      models:
+        ticket:
+          attributes:
+            passport_number:
+              wrong_length: "должен состоять из 10 цифр"
+        wagon:
+          blank: "должны быть указаны"
+          not_a_number: "должны состоять только из цифр"
+          present: "не указываются для данного типа вагона"
+          greater_than_or_equal_to: "должны быть больше, либо равно 0"
