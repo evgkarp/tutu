@@ -1,25 +1,33 @@
-<%= form_with(model: [:admin, @train, @wagon.becomes(Wagon)], local: true) do |f| %>
+<%= form_with(model: [:admin, @train, @wagon.becomes(Wagon)], local: true, html: {class: "form-inline"}) do |f| %>
   <%= render 'common/errors', resource: @wagon %>
 
-  <div class="field">
-    <%= f.label :type, 'Тип' %>
-    <%= f.collection_select :type, Wagon::WAGONS_TYPES, :first, :last %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :type, 'Тип' %>
+      <%= f.collection_select :type, Wagon::WAGONS_TYPES, :first, :last, {}, html_options = {class: "form-control"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :upper_seats, "Верхние места:" %>
-    <%= f.text_field :upper_seats, id: :upper_seats %>
-    <%= f.label :lower_seats, "Нижние места:" %>
-    <%= f.text_field :lower_seats, id: :lower_seats %>
-    <%= f.label :side_upper_seats, "Боковые верхние места:" %>
-    <%= f.text_field :side_upper_seats, id: :side_upper_seats %>
-    <%= f.label :side_lower_seats, "Боковые нижние места:" %>
-    <%= f.text_field :side_lower_seats, id: :side_lower_seats %>
-    <%= f.label :seats, "Сидячие места:" %>
-    <%= f.text_field :seats, id: :seats %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :upper_seats, "Верхние места:" %>
+      <%= f.text_field :upper_seats, id: :upper_seats, class: "form-control" %>
+      <%= f.label :lower_seats, "Нижние места:" %>
+      <%= f.text_field :lower_seats, id: :lower_seats, class: "form-control" %>
+      <%= f.label :side_upper_seats, "Боковые верхние места:" %>
+      <%= f.text_field :side_upper_seats, id: :side_upper_seats, class: "form-control" %>
+      <%= f.label :side_lower_seats, "Боковые нижние места:" %>
+      <%= f.text_field :side_lower_seats, id: :side_lower_seats, class: "form-control" %>
+      <%= f.label :seats, "Сидячие места:" %>
+      <%= f.text_field :seats, id: :seats, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "#{ @wagon.new_record? ? 'Создать' : 'Изменить' }" %>
+  <br>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.submit "#{ @wagon.new_record? ? 'Создать' : 'Изменить' }", class: "btn" %>
+    </div>
   </div>
 <% end %>

@@ -1,28 +1,29 @@
-<h1>Поиск билета</h1>
+<h1>Поиск билетов</h1>
 
 <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :from_station_id, t(".start_station"), class: "sr-only" %>
+      <%= f.collection_select :from_station_id, RailwayStation.all, :id, :title, {}, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :from_station_id, 'Начальная станция' %>
-    <%= f.collection_select :from_station_id, RailwayStation.all, :id, :title %>
-  </div>
+    <div class="col-md-4">
+      <%= f.label :to_station_id, t(".end_station"), class: "sr-only" %>
+      <%= f.collection_select :to_station_id, RailwayStation.all, :id, :title, {}, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :to_station_id, 'Конечная станция' %>
-    <%= f.collection_select :to_station_id, RailwayStation.all, :id, :title %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Найти" %>
+    <div class="col-md-4">
+      <%= f.submit t(".find"), class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
 
 <p>
   <% if @search_result.routes.present? %>
-    <table>
-    <thead>
+    <table class="table table-condensed">
+    <thead style="font-weight: bold">
       <tr>
-        <td width="150">Маршрут</td>
+        <td>Маршрут</td>
         <td>Номер поезда</td>
         <td>Время отправления</td>
         <td>Время прибытия</td>
@@ -39,7 +40,7 @@
             <td><%= @search_result.to_station.arrival_time(route) %></td>
             <td>
               <% if current_user.nil? %>
-                <%= button_to "Купить", new_user_session_path %>
+                <%= button_to t(".buy"), new_user_session_path, method: :get %>
               <% elsif current_user.admin? %>
                 <%= render 'buy_ticket', train: train, url: new_admin_ticket_path %>
               <% else %>

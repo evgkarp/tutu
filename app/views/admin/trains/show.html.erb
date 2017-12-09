@@ -31,14 +31,19 @@
   <strong>Список вагонов:</strong>
 </p>
 
-<%= form_with(model: [:admin, @train], local: true) do |f| %>
-  <div class="field">
-    <%= f.label :head_ordered, 'Нумерация с головы' %>
-    <%= f.check_box("head_ordered", {}, :true, :false) %>
-  </div>
+<%= form_with(model: [:admin, @train], local: true, html: {class: "form-inline"}) do |f| %>
+  <div class="row">
+    <div class="col-md-1" style="width: 10px">
+      <%= f.check_box("head_ordered", {}, :true, :false) %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Применить" %>
+    <div class="col-md-1">
+      <%= f.label :head_ordered, 'Нумерация с головы' %>
+    </div>
+
+    <div class="col-md-9">
+      <%= f.submit "Применить", class: "btn" %>
+    </div>
   </div>
 <% end %>
 
@@ -55,7 +60,7 @@
 </p>
 
 <p>
-  <%= link_to "Добавить вагон", new_admin_train_wagon_path(@train) %>
+  <%= button_to "Добавить вагон", new_admin_train_wagon_path(@train), method: :get, class: "btn" %>
 </p>
 
 <p>

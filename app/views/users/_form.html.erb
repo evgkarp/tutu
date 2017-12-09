@@ -1,12 +1,16 @@
-<%= form_with(model: @user, local: true) do |f| %>
+<%= form_with(model: @user, local: true, html: {class: "form-inline"}) do |f| %>
   <%= render 'common/errors', resource: @user %>
-  
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, id: :user_name %>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :name %>
+      <%= f.text_field :name, id: :user_name, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "#{ @user.new_record? ? 'Создать' : 'Изменить' }" %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.submit "#{ @user.new_record? ? 'Создать' : 'Изменить' }", class: "btn" %>
+    </div>
   </div>
 <% end %>

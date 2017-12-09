@@ -1,22 +1,32 @@
-<%= form_with(model: [:admin, @train], local: true) do |f| %>
+<%= form_with(model: [:admin, @train], local: true, html: {class: "form-inline"}) do |f| %>
   <%= render 'common/errors', resource: @train %>
 
-  <div class="field">
-    <%= f.label :number, 'Номер' %>
-    <%= f.text_field :number, id: :train_number %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :number, 'Номер' %>
+      <%= f.text_field :number, id: :train_number %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :curren_station_id, 'Текущая станция' %>
-    <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :curren_station_id, 'Текущая станция' %>
+      <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :route_id, 'Текущий маршрут' %>
-    <%= f.collection_select :route_id, Route.all, :id, :name %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :route_id, 'Текущий маршрут' %>
+      <%= f.collection_select :route_id, Route.all, :id, :name %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "#{ @train.new_record? ? 'Создать' : 'Изменить' }" %>
+  <br>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.submit "#{ @train.new_record? ? 'Создать' : 'Изменить' }", class: "btn" %>
+    </div>
   </div>
 <% end %>

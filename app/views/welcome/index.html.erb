@@ -1,12 +1,1 @@
-<h1>Tutu</h1>
-
-<% if current_user.present? && current_user.admin? %>
-  <h2>Управление ресурсами</h2>
-  <%= link_to 'Список станций', admin_railway_stations_path %>
-  <%= link_to 'Список поездов', admin_trains_path %>
-  <%= link_to 'Список маршрутов', admin_routes_path %>
-  <%= link_to 'Список билетов', admin_tickets_path %>
-<% end %>
-
-<%= link_to 'Поиск билетов', search_path %>
-
+<p><%= button_to 'Найти билеты', search_path, method: :get, class: "btn" %></p>

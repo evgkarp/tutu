@@ -1,6 +1,6 @@
 <h1>Список билетов</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Номер</th>
@@ -13,4 +13,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Поиск билетов', search_path %>
+<p><%= button_to 'Найти билеты', search_path, method: :get %></p>
+
