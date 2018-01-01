@@ -20,6 +20,7 @@ ru:
         side_upper_seats: "Боковые верхние места"
         side_lower_seats: "Боковые нижние места"
         seats: "Сидячие места"
+        type: "Тип вагона"
     errors:
       messages:
         blank: "не может быть пустым"
@@ -30,7 +31,7 @@ ru:
             passport_number:
               wrong_length: "должен состоять из 10 цифр"
         wagon:
-          blank: "должны быть указаны"
+          blank: "должен быть указан"
           not_a_number: "должны состоять только из цифр"
           present: "не указываются для данного типа вагона"
           greater_than_or_equal_to: "должны быть больше, либо равно 0"

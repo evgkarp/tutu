@@ -35,7 +35,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
-
+gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 gem 'rails_12factor'

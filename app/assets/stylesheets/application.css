@@ -13,3 +13,43 @@
  *= require_tree .
  *= require_self
  */
+.brand-container {
+  position: relative;
+  float: left;
+  width: 100px;
+  min-height: 80px;
+}
+
+.navbar-brand {
+  width: 100%;
+  margin: 0 auto !important;
+  background-image: url(train.png);
+  background-size: 80px;
+  background-repeat: no-repeat;
+}
+
+.logo {
+  margin-left: 15px;
+  font-size: 120%;
+  font-weight: bold;
+  color: #a94442;
+}
+
+.navbar-nav, .navbar-brand {
+  height: 80px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-bottom: 60px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+}
