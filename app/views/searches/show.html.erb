@@ -1,15 +1,15 @@
 <h1>Поиск билетов</h1>
 
-<%= form_with(url: search_path, method: :get, local: true) do |f| %>
+<%= form_with(url: search_path, method: :get, local: true, html: { class: "search-form" }) do |f| %>
   <div class="row">
     <div class="col-md-4">
       <%= f.label :from_station_id, t(".start_station"), class: "sr-only" %>
-      <%= f.collection_select :from_station_id, RailwayStation.all, :id, :title, {}, class: "form-control" %>
+      <%= f.collection_select :from_station_id, RailwayStation.all, :id, :title, { include_blank: 'Выберите станцию отправления' }, class: "form-control from-station" %>
     </div>
 
     <div class="col-md-4">
       <%= f.label :to_station_id, t(".end_station"), class: "sr-only" %>
-      <%= f.collection_select :to_station_id, RailwayStation.all, :id, :title, {}, class: "form-control" %>
+      <%= f.collection_select :to_station_id, RailwayStation.all, :id, :title, { include_blank: 'Выберите станцию прибытия' }, class: "form-control to-station" %>
     </div>
 
     <div class="col-md-4">

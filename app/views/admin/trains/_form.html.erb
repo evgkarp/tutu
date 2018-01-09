@@ -1,5 +1,6 @@
-<%= form_with(model: [:admin, @train], local: true, html: {class: "form-inline"}) do |f| %>
-  <%= render 'common/errors', resource: @train %>
+<% hidden ||= false %>
+<%= form_for [:admin, train], html: {class: "form-inline", style: "display: #{hidden ? 'none' : 'block'}" } do |f| %>
+  <%= render 'common/errors', resource: train %>
 
   <div class="row">
     <div class="col-md-4">
@@ -26,7 +27,7 @@
 
   <div class="row">
     <div class="col-md-4">
-      <%= f.submit "#{ @train.new_record? ? 'Создать' : 'Изменить' }", class: "btn" %>
+      <%= f.submit "#{ train.new_record? ? 'Создать' : 'Изменить' }", class: "btn" %>
     </div>
   </div>
 <% end %>

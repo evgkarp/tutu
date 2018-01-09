@@ -1,10 +1,10 @@
-<%= form_with(model: [:admin, @train, @wagon.becomes(Wagon)], local: true, html: {class: "form-inline"}) do |f| %>
+<%= form_with(model: [:admin, @train, @wagon.becomes(Wagon)], local: true, html: {class: "form-inline wagons"}) do |f| %>
   <%= render 'common/errors', resource: @wagon %>
 
   <div class="row">
     <div class="col-md-4">
       <%= f.label :type, 'Тип' %>
-      <%= f.collection_select :type, Wagon::WAGONS_TYPES, :first, :last, {}, html_options = {class: "form-control"} %>
+      <%= f.collection_select :type, Wagon::WAGONS_TYPES, :first, :last, { include_blank: 'Выберите тип вагона'}, html_options = {class: "form-control"} %>
     </div>
   </div>
 
