@@ -1,4 +1,4 @@
-<% hidden = false unless local_assigns[:hidden] %>
+<% hidden ||= false %>
 <%= form_for [:admin, station], html: {class: "form-inline", style: "display: #{hidden ? 'none' : 'block'}" } do |f| %>
   <%= render 'common/errors', resource: station %>
 

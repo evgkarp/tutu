@@ -32,7 +32,7 @@ $(document).ready(function() {
     };
 
     $('label').show();
-    $('.form-control').filter(":hidden").each(function(index) {
+    $('.form-control').filter(":hidden").each(function() {
       $('label[for="wagon_' + $(this).attr('id') + '"]').hide();
     });
   });

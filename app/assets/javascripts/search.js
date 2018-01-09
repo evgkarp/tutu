@@ -11,7 +11,7 @@ $(document).ready(function() {
   $('.search-form').submit(function() {
     var fromStation = $(this).find('.from-station').val();
     var toStation = $(this).find('.to-station').val();
-    if((fromStation == false) || (toStation == false)) {
+    if(!fromStation || !toStation) {
       return false;
     };
   });

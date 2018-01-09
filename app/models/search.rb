@@ -5,7 +5,7 @@ class Search
   end
 
   def routes
-    from_station.routes & to_station.routes if (from_station.present? && to_station.present?)
+    Array(from_station&.routes) & Array(to_station&.routes)
   end
 
   def from_station
